@@ -1,4 +1,4 @@
-# DEV NOTEBOOK
+# Dev Notebook
 
 This repositories is a place for me to store knowledge.
 
