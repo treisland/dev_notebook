@@ -51,10 +51,10 @@ resource "aws_instance" "instance" {
 }
 
 resource "aws_ebs_volume" "data" {
-  availability_zone = var.vol.availability_zone
-  size              = var.vol.size
+  availability_zone = var.volume.availability_zone
+  size              = var.volume.size
   tags = {
-    Name = var.vol.name
+    Name = var.volume.name
   }
 }
 

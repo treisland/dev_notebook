@@ -27,6 +27,7 @@ variable "keypair" {
 
 variable "region" {
   type        = string
+  default     = "us-west-2"
   description = "aws deployment region"
 }
 
@@ -38,8 +39,8 @@ variable "security_group" {
 variable "volume" {
   type = object({
     availability_zone = string
-    size = number
-    name = string
-    device = string
+    size              = number
+    name              = string
+    device            = string
   })
 }
