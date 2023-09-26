@@ -1,0 +1,18 @@
+instance_name = ""
+
+image_id = ""
+
+instance_type = ""
+
+allowed_ip = ""
+
+keypair = ""
+
+security_group = ""
+
+volume = {
+    availability_zone = "",
+    size              = 20,
+    name              = "",
+    device            = ""
+  }
