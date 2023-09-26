@@ -1,3 +1,5 @@
+region = ""
+
 instance_name = ""
 
 image_id = ""
@@ -7,3 +9,11 @@ instance_type = ""
 key_name = ""
 
 sg_name = ""
+
+volume.availability_zone = ""
+
+volume.size = 
+
+volume.name =
+
+volume.device = 

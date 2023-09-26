@@ -20,7 +20,7 @@ data "aws_vpc" "default" {
 resource "aws_security_group" "sg" {
   name        = var.security_group
   vpc_id      = data.aws_vpc.default.id
-  description = "this security group will grant access to my ip address"
+  description = "this security group will grant SSH access to my ip address"
 }
 
 resource "aws_vpc_security_group_ingress_rule" "ssh" {
@@ -31,16 +31,6 @@ resource "aws_vpc_security_group_ingress_rule" "ssh" {
   to_port     = 22
   from_port   = 22
 }
-
-resource "aws_vpc_security_group_ingress_rule" "rdp" {
-  security_group_id = aws_security_group.sg.id
-
-  cidr_ipv4   = var.allowed_ip
-  ip_protocol = "tcp"
-  to_port     = 3306
-  from_port   = 3306
-}
-
 
 resource "aws_vpc_security_group_egress_rule" "egress" {
   security_group_id = aws_security_group.sg.id
@@ -58,4 +48,18 @@ resource "aws_instance" "instance" {
   tags = {
     Name = var.instance_name
   }
+}
+
+resource "aws_ebs_volume" "data" {
+  availability_zone = var.volume.availability_zone
+  size              = var.volume.size
+  tags = {
+    Name = var.volume.name
+  }
+}
+
+resource "aws_volume_attachment" "ebs_att" {
+  device_name = var.volume.device
+  volume_id   = aws_ebs_volume.data.id
+  instance_id = aws_instance.instance.id
 }
