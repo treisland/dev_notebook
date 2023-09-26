@@ -49,17 +49,3 @@ resource "aws_instance" "instance" {
     Name = var.instance_name
   }
 }
-
-resource "aws_ebs_volume" "data" {
-  availability_zone = var.vol.availability_zone
-  size              = var.vol.size
-  tags = {
-    Name = var.vol.name
-  }
-}
-
-resource "aws_volume_attachment" "ebs_att" {
-  device_name = var.volume.device
-  volume_id   = aws_ebs_volume.data.id
-  instance_id = aws_instance.instance.id
-}
